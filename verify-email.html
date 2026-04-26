@@ -3,8 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Verificación de Email</title>
+    <title>Verificación de Email - Uteroo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #EC407A;
+            --primary-light: #F8BBD0;
+            --primary-dark: #D81B60;
+            --primary-ultra-light: #FCE4EC;
+            --background: #FFFFFF;
+            --text-primary: #424242;
+            --text-secondary: #757575;
+            --text-lighter: #9E9E9E;
+            --success: #4CAF50;
+            --error: #F44336;
+            --warning: #FF9800;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,102 +29,108 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1rem;
-        }
-
-        .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            max-width: 500px;
-            width: 100%;
-            padding: 3rem 2rem;
-            text-align: center;
-            animation: slideIn 0.5s ease;
-        }
-
-        .icon {
-            font-size: 5rem;
-            margin-bottom: 1.5rem;
-            animation: bounce 1s ease;
-        }
-
-        .success-icon {
-            color: #10b981;
-        }
-
-        .error-icon {
-            color: #ef4444;
-        }
-
-        .loading-icon {
-            color: #667eea;
-            animation: spin 1s linear infinite;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
         }
 
         h1 {
-            color: #1f2937;
-            font-size: 2rem;
-            margin-bottom: 1rem;
+            font-family: 'Poppins', sans-serif;
         }
 
-        p {
-            color: #6b7280;
-            font-size: 1.1rem;
+        .verification-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, #F8BBD0 0%, #FCE4EC 50%, #FFFFFF 100%);
+            padding: 24px;
+        }
+
+        .verification-card {
+            background: var(--background);
+            border-radius: 20px;
+            padding: 48px 32px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            animation: slideIn 0.5s ease;
+        }
+
+        .verification-icon {
+            font-size: 80px;
+            margin-bottom: 24px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .icon-loading {
+            color: var(--primary);
+        }
+
+        .icon-success {
+            color: var(--success);
+        }
+
+        .icon-error {
+            color: var(--error);
+        }
+
+        .icon-warning {
+            color: var(--warning);
+        }
+
+        .verification-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .title-loading {
+            color: var(--primary);
+        }
+
+        .title-success {
+            color: var(--success);
+        }
+
+        .title-error {
+            color: var(--error);
+        }
+
+        .title-warning {
+            color: var(--warning);
+        }
+
+        .verification-message {
+            font-size: 16px;
+            color: var(--text-primary);
             line-height: 1.6;
-            margin-bottom: 2rem;
+            margin-bottom: 24px;
         }
 
-        .button {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
-        }
-
-        .secondary-button {
-            background: #e5e7eb;
-            color: #374151;
-            margin-left: 1rem;
-        }
-
-        .secondary-button:hover {
-            background: #d1d5db;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .verification-secondary {
+            font-size: 14px;
+            color: var(--text-lighter);
+            margin-top: 24px;
         }
 
         .hidden {
             display: none;
         }
 
+        /* Spinner de carga */
         .spinner {
-            border: 4px solid #f3f4f6;
-            border-top: 4px solid #667eea;
+            border: 4px solid var(--primary-ultra-light);
+            border-top: 4px solid var(--primary);
             border-radius: 50%;
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             animation: spin 1s linear infinite;
-            margin: 2rem auto;
+            margin: 0 auto 24px;
         }
 
+        /* Animaciones */
         @keyframes slideIn {
             from {
                 opacity: 0;
@@ -119,73 +142,89 @@
             }
         }
 
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
             }
-            50% {
-                transform: translateY(-20px);
+            to {
+                opacity: 1;
+                transform: scale(1);
             }
         }
 
         @keyframes spin {
-            0% {
+            from {
                 transform: rotate(0deg);
             }
-            100% {
+            to {
                 transform: rotate(360deg);
             }
         }
 
+        /* Responsive */
         @media (max-width: 600px) {
-            .container {
-                padding: 2rem 1.5rem;
+            .verification-card {
+                padding: 32px 24px;
             }
 
-            h1 {
-                font-size: 1.5rem;
+            .verification-title {
+                font-size: 20px;
             }
 
-            p {
-                font-size: 1rem;
+            .verification-message {
+                font-size: 14px;
             }
 
-            .button {
-                padding: 0.875rem 2rem;
-                font-size: 0.95rem;
-            }
-
-            .secondary-button {
-                margin-left: 0;
-                margin-top: 1rem;
-                display: block;
+            .verification-icon {
+                font-size: 64px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Estado de carga -->
-    <div id="loading" class="container">
-        <div class="spinner"></div>
-        <h1>Verificando tu email...</h1>
-        <p>Por favor espera un momento</p>
-    </div>
+    <div class="verification-container">
+        <!-- Estado de carga -->
+        <div id="loading" class="verification-card">
+            <div class="spinner"></div>
+            <h1 class="verification-title title-loading">Verificando tu cuenta...</h1>
+            <p class="verification-message">Espera un momento mientras confirmamos tu email.</p>
+        </div>
 
-    <!-- Verificación exitosa -->
-    <div id="success" class="container hidden">
-        <div class="icon success-icon">✓</div>
-        <h1>¡Email Verificado!</h1>
-        <p>Tu correo electrónico ha sido verificado exitosamente. Ya puedes acceder a todas las funciones de tu cuenta.</p>
-        <a href="#" class="button" id="successButton">Ir a la aplicación</a>
-    </div>
+        <!-- Verificación exitosa -->
+        <div id="success" class="verification-card hidden">
+            <div class="verification-icon icon-success">✓</div>
+            <h1 class="verification-title title-success">¡Cuenta Verificada!</h1>
+            <p class="verification-message">
+                Tu email ha sido verificado exitosamente.<br><br>
+                Ya puedes iniciar sesión en la app Uteroo 
+                y comenzar a cuidar de tu ciclo.
+            </p>
+            <p class="verification-secondary">Puedes cerrar esta ventana.</p>
+        </div>
 
-    <!-- Error en la verificación -->
-    <div id="error" class="container hidden">
-        <div class="icon error-icon">✕</div>
-        <h1>Error en la Verificación</h1>
-        <p id="errorMessage">El enlace de verificación es inválido o ha expirado. Por favor, solicita un nuevo enlace de verificación.</p>
-        <a href="#" class="button" id="resendButton">Reenviar Email</a>
-        <a href="#" class="button secondary-button" id="errorBackButton">Volver al inicio</a>
+        <!-- Error en la verificación -->
+        <div id="error" class="verification-card hidden">
+            <div class="verification-icon icon-error">✕</div>
+            <h1 class="verification-title title-error">Error de Verificación</h1>
+            <p class="verification-message" id="errorMessage">
+                No pudimos verificar tu cuenta.<br><br>
+                El enlace puede haber expirado o ya fue usado.
+                Por favor, solicita un nuevo enlace de verificación 
+                desde la app.
+            </p>
+        </div>
+
+        <!-- Token expirado -->
+        <div id="expired" class="verification-card hidden">
+            <div class="verification-icon icon-warning">⏰</div>
+            <h1 class="verification-title title-warning">Enlace Expirado</h1>
+            <p class="verification-message">
+                Este enlace de verificación ha expirado.<br><br>
+                Por seguridad, los enlaces solo son válidos por 24 horas.
+                Solicita un nuevo enlace desde la app.
+            </p>
+        </div>
     </div>
 
     <script>
@@ -198,6 +237,7 @@
         const loading = document.getElementById('loading');
         const success = document.getElementById('success');
         const error = document.getElementById('error');
+        const expired = document.getElementById('expired');
 
         // Simular verificación (reemplaza esto con tu llamada real al backend)
         async function verifyEmail() {
@@ -206,13 +246,20 @@
                 loading.classList.remove('hidden');
                 success.classList.add('hidden');
                 error.classList.add('hidden');
+                expired.classList.add('hidden');
 
                 // Para testing: usar parámetro status
                 if (status === 'success') {
+                    await new Promise(resolve => setTimeout(resolve, 1500));
                     showSuccess();
                     return;
                 } else if (status === 'error') {
+                    await new Promise(resolve => setTimeout(resolve, 1500));
                     showError('El enlace de verificación ha expirado.');
+                    return;
+                } else if (status === 'expired') {
+                    await new Promise(resolve => setTimeout(resolve, 1500));
+                    showExpired();
                     return;
                 }
 
@@ -243,21 +290,25 @@
             loading.classList.add('hidden');
             success.classList.remove('hidden');
             error.classList.add('hidden');
+            expired.classList.add('hidden');
         }
 
         function showError(message) {
             loading.classList.add('hidden');
             success.classList.add('hidden');
             error.classList.remove('hidden');
+            expired.classList.add('hidden');
             if (message) {
-                document.getElementById('errorMessage').textContent = message;
+                document.getElementById('errorMessage').innerHTML = message;
             }
         }
 
-        // Configurar botones (reemplaza '#' con tus URLs reales)
-        document.getElementById('successButton').href = '/'; // URL de tu app
-        document.getElementById('resendButton').href = '/resend-verification'; // URL para reenviar
-        document.getElementById('errorBackButton').href = '/'; // URL de inicio
+        function showExpired() {
+            loading.classList.add('hidden');
+            success.classList.add('hidden');
+            error.classList.add('hidden');
+            expired.classList.remove('hidden');
+        }
 
         // Iniciar verificación al cargar la página
         verifyEmail();
