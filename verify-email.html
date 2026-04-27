@@ -228,75 +228,86 @@
     </div>
 
     <script>
-        // Obtener parámetros de la URL
+        // Obtener parámetros de la URL (tanto de query string como de hash)
         const urlParams = new URLSearchParams(window.location.search);
-        const token = urlParams.get('token');
-        const status = urlParams.get('status'); // Para testing: ?status=success o ?status=error
+        const hashParams = new URLSearchParams(window.location.hash.substring(1));
+        
+        // Supabase puede enviar parámetros en el hash (#) o en el query string (?)
+        const error = urlParams.get('error') || hashParams.get('error');
+        const errorCode = urlParams.get('error_code') || hashParams.get('error_code');
+        const errorDescription = urlParams.get('error_description') || hashParams.get('error_description');
+        const token = urlParams.get('token') || hashParams.get('token');
+        const status = urlParams.get('status'); // Para testing manual
 
         // Elementos del DOM
         const loading = document.getElementById('loading');
         const success = document.getElementById('success');
-        const error = document.getElementById('error');
+        const errorDiv = document.getElementById('error');
         const expired = document.getElementById('expired');
 
-        // Simular verificación (reemplaza esto con tu llamada real al backend)
         async function verifyEmail() {
             try {
-                // Mostrar loading
+                // Mostrar loading inicialmente
                 loading.classList.remove('hidden');
                 success.classList.add('hidden');
-                error.classList.add('hidden');
+                errorDiv.classList.add('hidden');
                 expired.classList.add('hidden');
 
-                // Para testing: usar parámetro status
+                // Simular un pequeño delay para que se vea el loading
+                await new Promise(resolve => setTimeout(resolve, 800));
+
+                // Para testing manual: usar parámetro status
                 if (status === 'success') {
-                    await new Promise(resolve => setTimeout(resolve, 1500));
                     showSuccess();
                     return;
                 } else if (status === 'error') {
-                    await new Promise(resolve => setTimeout(resolve, 1500));
                     showError('El enlace de verificación ha expirado.');
                     return;
                 } else if (status === 'expired') {
-                    await new Promise(resolve => setTimeout(resolve, 1500));
                     showExpired();
                     return;
                 }
 
-                // Si no hay token, mostrar error
-                if (!token) {
-                    showError('No se proporcionó un token de verificación válido.');
+                // Verificar si Supabase envió un error
+                if (error) {
+                    // Hay un error de Supabase
+                    console.log('Error de Supabase:', error, errorCode, errorDescription);
+                    
+                    // Decodificar el mensaje de error
+                    const decodedDescription = errorDescription ? decodeURIComponent(errorDescription.replace(/\+/g, ' ')) : '';
+                    
+                    // Mostrar el error apropiado según el código
+                    if (errorCode === 'otp_expired' || decodedDescription.includes('expired')) {
+                        showExpired();
+                    } else if (errorCode === 'otp_invalid' || decodedDescription.includes('invalid')) {
+                        showError('El enlace de verificación es inválido o ya fue usado.<br><br>Por favor, solicita un nuevo enlace desde la app.');
+                    } else {
+                        showError(decodedDescription || 'No pudimos verificar tu cuenta.<br><br>Por favor, solicita un nuevo enlace desde la app.');
+                    }
                     return;
                 }
 
-                // Llamada real a tu backend
-                // REEMPLAZA 'https://tu-api.com' con la URL de tu backend
-                const response = await fetch(`https://tu-api.com/api/verify-email?token=${token}`);
-                const data = await response.json();
-                
-                if (response.ok && data.success) {
-                    showSuccess();
-                } else {
-                    showError(data.message || 'Error al verificar el email.');
-                }
+                // Si no hay error de Supabase, la verificación fue exitosa
+                // (Supabase ya procesó el token correctamente)
+                showSuccess();
 
             } catch (err) {
-                console.error('Error:', err);
-                showError('Ocurrió un error al verificar tu email. Por favor, intenta nuevamente.');
+                console.error('Error inesperado:', err);
+                showError('Ocurrió un error inesperado. Por favor, intenta nuevamente.');
             }
         }
 
         function showSuccess() {
             loading.classList.add('hidden');
             success.classList.remove('hidden');
-            error.classList.add('hidden');
+            errorDiv.classList.add('hidden');
             expired.classList.add('hidden');
         }
 
         function showError(message) {
             loading.classList.add('hidden');
             success.classList.add('hidden');
-            error.classList.remove('hidden');
+            errorDiv.classList.remove('hidden');
             expired.classList.add('hidden');
             if (message) {
                 document.getElementById('errorMessage').innerHTML = message;
@@ -306,7 +317,7 @@
         function showExpired() {
             loading.classList.add('hidden');
             success.classList.add('hidden');
-            error.classList.add('hidden');
+            errorDiv.classList.add('hidden');
             expired.classList.remove('hidden');
         }
 
