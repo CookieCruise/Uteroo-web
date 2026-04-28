@@ -268,6 +268,13 @@
                     return;
                 }
 
+                // VALIDACIÓN ESTRICTA: Verificar si hay un token válido
+                // Si no hay token, significa que alguien entró directamente a la URL
+                if (!token) {
+                    showError('No se proporcionó un enlace de verificación válido.<br><br>Por favor, usa el enlace que recibiste en tu email.');
+                    return;
+                }
+
                 // Verificar si Supabase envió un error
                 if (error) {
                     // Hay un error de Supabase
@@ -287,7 +294,7 @@
                     return;
                 }
 
-                // Si no hay error de Supabase, la verificación fue exitosa
+                // Si hay token Y no hay error de Supabase, la verificación fue exitosa
                 // (Supabase ya procesó el token correctamente)
                 showSuccess();
 
