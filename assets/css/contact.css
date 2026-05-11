@@ -1,6 +1,6 @@
 /* CONTACTO */
 .contact {
-    background: var(--background);
+    background: linear-gradient(180deg, #FFFFFF 0%, #FCE4EC 100%);
     padding: 64px 32px;
 }
 

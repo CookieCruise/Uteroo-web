@@ -40,6 +40,8 @@ nav {
     font-weight: 500;
     transition: color 0.3s ease;
     cursor: pointer;
+    padding: 12px 8px;
+    display: inline-block;
 }
 
 .nav-menu a:hover {
