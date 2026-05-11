@@ -51,10 +51,14 @@
         }
 
         .hero-icon {
-            font-size: 100px;
-            color: var(--primary-light);
             margin-bottom: 24px;
             animation: fadeInDown 1s ease;
+        }
+
+        .hero-icon img {
+            max-width: 200px;
+            height: auto;
+            object-fit: contain;
         }
 
         .hero h1 {
@@ -241,9 +245,11 @@
 <body>
     <!-- HERO SECTION -->
     <section class="hero">
-        <div class="hero-icon">♥</div>
+        <div class="hero-icon">
+            <img src="assets/images/mascota.png" alt="Uteroo Mascota">
+        </div>
         <h1>¡Bienvenida a Uteroo!</h1>
-        <p class="hero-subtitle">Tu compañera para el cuidado menstrual</p>
+        <p class="hero-subtitle">Tu compañera durante tu ciclo menstrual</p>
         <p class="hero-description">
             Lleva el control de tu ciclo, cuida de tu mascota virtual 
             y encuentra bienestar en cada fase.
@@ -265,7 +271,7 @@
                 <div class="card">
                     <div class="card-icon">🐾</div>
                     <h3>Mascota Virtual</h3>
-                    <p>Cuida de tu compañera virtual. Ámala, vístela y explora juntas en cada fase.</p>
+                    <p>Cuida de tu compañera virtual. Cuídala, vístela y explora mientras crecen juntas en cada fase.</p>
                 </div>
 
                 <div class="card">
@@ -285,7 +291,7 @@
             <div class="about-content">
                 <p class="about-description">
                     Uteroo es más que una app de seguimiento menstrual. 
-                    Es tu espacio seguro para entender tu cuerpo, cuidar 
+                    Es en espacio seguro para entender tu cuerpo, cuidar 
                     de tu bienestar emocional y acompañarte en cada etapa 
                     de tu ciclo.
                 </p>
