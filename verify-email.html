@@ -22,28 +22,56 @@
             --error: #F44336;
             --warning: #FF9800;
             
-            /* Forzar esquema de colores claro */
             color-scheme: light only;
+            supported-color-schemes: light;
         }
 
-        * {
+        /* Prevenir modo oscuro en TODOS los elementos */
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            color-scheme: light only !important;
+        }
+
+        html {
+            color-scheme: light only !important;
+            background-color: #FFFFFF !important;
         }
 
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--background);
-            /* Forzar esquema de colores claro */
-            color-scheme: light only;
+            color: #424242 !important;
+            background-color: #FFFFFF !important;
+            color-scheme: light only !important;
         }
 
-        html {
-            /* Forzar esquema de colores claro */
-            color-scheme: light only;
+        /* Media query para forzar modo claro incluso si el sistema prefiere oscuro */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #EC407A;
+                --primary-light: #F8BBD0;
+                --primary-dark: #D81B60;
+                --primary-ultra-light: #FCE4EC;
+                --background: #FFFFFF;
+                --text-primary: #424242;
+                --text-secondary: #757575;
+                --text-lighter: #9E9E9E;
+                --success: #4CAF50;
+                --error: #F44336;
+                --warning: #FF9800;
+                
+                color-scheme: light only;
+            }
+            
+            html,
+            body {
+                background-color: #FFFFFF !important;
+                color: #424242 !important;
+            }
         }
 
         h1 {
