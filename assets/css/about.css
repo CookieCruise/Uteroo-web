@@ -1,0 +1,44 @@
+/* SOBRE LA APP */
+.about {
+    background: linear-gradient(180deg, #FFFFFF 0%, #FCE4EC 100%);
+    padding: 64px 32px;
+    text-align: center;
+}
+
+.about-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 24px;
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-description {
+    font-size: 16px;
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 32px;
+}
+
+.about-list {
+    text-align: left;
+    display: inline-block;
+    font-size: 16px;
+    color: var(--text-primary);
+    line-height: 2;
+}
+
+/* RESPONSIVE */
+@media (max-width: 640px) {
+    .about {
+        padding: 48px 16px;
+    }
+
+    .about-title {
+        font-size: 24px;
+    }
+}

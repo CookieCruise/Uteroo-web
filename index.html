@@ -4,252 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Uteroo - Tu compañera menstrual</title>
+    
+    <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #EC407A;
-            --primary-light: #F8BBD0;
-            --primary-dark: #D81B60;
-            --primary-ultra-light: #FCE4EC;
-            --background: #FFFFFF;
-            --background-grey: #F5F5F5;
-            --text-primary: #424242;
-            --text-secondary: #757575;
-            --text-light: #616161;
-            --success: #4CAF50;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-        }
-
-        h1, h2, h3 {
-            font-family: 'Poppins', sans-serif;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(180deg, #F8BBD0 0%, #FCE4EC 50%, #FFFFFF 100%);
-            padding: 2rem;
-            animation: fadeIn 1s ease;
-        }
-
-        .hero-icon {
-            margin-bottom: 24px;
-            animation: fadeInDown 1s ease;
-        }
-
-        .hero-icon img {
-            max-width: 200px;
-            height: auto;
-            object-fit: contain;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 16px;
-            animation: fadeInDown 1.2s ease;
-        }
-
-        .hero-subtitle {
-            font-size: 18px;
-            color: var(--text-light);
-            margin-bottom: 24px;
-            animation: fadeInUp 1.4s ease;
-        }
-
-        .hero-description {
-            font-size: 16px;
-            color: var(--text-secondary);
-            max-width: 600px;
-            line-height: 1.6;
-            animation: fadeInUp 1.6s ease;
-        }
-
-        /* CARACTERÍSTICAS */
-        .features {
-            background: var(--background);
-            padding: 64px 32px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .features-title {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--primary);
-            text-align: center;
-            margin-bottom: 48px;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-        }
-
-        .card {
-            background: var(--background-grey);
-            padding: 32px;
-            border-radius: 16px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 24px rgba(236, 64, 122, 0.15);
-        }
-
-        .card-icon {
-            font-size: 48px;
-            margin-bottom: 16px;
-        }
-
-        .card h3 {
-            font-size: 20px;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 12px;
-        }
-
-        .card p {
-            font-size: 14px;
-            color: var(--text-secondary);
-            line-height: 1.6;
-        }
-
-        /* SOBRE LA APP */
-        .about {
-            background: linear-gradient(180deg, #FFFFFF 0%, #FCE4EC 100%);
-            padding: 64px 32px;
-            text-align: center;
-        }
-
-        .about-title {
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 24px;
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .about-description {
-            font-size: 16px;
-            color: var(--text-primary);
-            line-height: 1.6;
-            margin-bottom: 32px;
-        }
-
-        .about-list {
-            text-align: left;
-            display: inline-block;
-            font-size: 16px;
-            color: var(--text-primary);
-            line-height: 2;
-        }
-
-        /* FOOTER */
-        footer {
-            background: var(--text-primary);
-            color: var(--background);
-            text-align: center;
-            padding: 32px 24px;
-            font-size: 14px;
-        }
-
-        .footer-heart {
-            color: var(--primary);
-            font-size: 16px;
-        }
-
-        /* ANIMACIONES */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 640px) {
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            .hero-subtitle {
-                font-size: 16px;
-            }
-
-            .features-title,
-            .about-title {
-                font-size: 24px;
-            }
-
-            .features,
-            .about {
-                padding: 48px 16px;
-            }
-        }
-    </style>
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/hero.css">
+    <link rel="stylesheet" href="assets/css/features.css">
+    <link rel="stylesheet" href="assets/css/about.css">
+    <link rel="stylesheet" href="assets/css/contact.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
 </head>
 <body>
+    <!-- NAVEGACIÓN -->
+    <nav>
+        <div class="nav-container">
+            <a href="#inicio" class="nav-logo">Uteroo</a>
+            
+            <div class="nav-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#caracteristicas">Características</a></li>
+                <li><a href="#sobre-uteroo">Sobre Uteroo</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <!-- HERO SECTION -->
-    <section class="hero">
+    <section class="hero" id="inicio">
         <div class="hero-icon">
-            <img src="assets/images/mascota.png" alt="Uteroo Mascota">
+            <img src="assets/images/amsctoa.png" alt="Uteroo Mascota">
         </div>
         <h1>¡Bienvenida a Uteroo!</h1>
-        <p class="hero-subtitle">Tu compañera durante tu ciclo menstrual</p>
+        <p class="hero-subtitle">Tu compañera para el cuidado menstrual</p>
         <p class="hero-description">
             Lleva el control de tu ciclo, cuida de tu mascota virtual 
             y encuentra bienestar en cada fase.
@@ -257,7 +54,7 @@
     </section>
 
     <!-- CARACTERÍSTICAS -->
-    <section class="features">
+    <section class="features" id="caracteristicas">
         <div class="container">
             <h2 class="features-title">¿Qué hace especial a Uteroo?</h2>
             
@@ -271,7 +68,7 @@
                 <div class="card">
                     <div class="card-icon">🐾</div>
                     <h3>Mascota Virtual</h3>
-                    <p>Cuida de tu compañera virtual. Cuídala, vístela y explora mientras crecen juntas en cada fase.</p>
+                    <p>Cuida de tu compañera virtual. Ámala, vístela y explora juntas en cada fase.</p>
                 </div>
 
                 <div class="card">
@@ -284,14 +81,14 @@
     </section>
 
     <!-- SOBRE LA APP -->
-    <section class="about">
+    <section class="about" id="sobre-uteroo">
         <div class="container">
             <h2 class="about-title">Diseñada con amor para ti</h2>
             
             <div class="about-content">
                 <p class="about-description">
                     Uteroo es más que una app de seguimiento menstrual. 
-                    Es en espacio seguro para entender tu cuerpo, cuidar 
+                    Es tu espacio seguro para entender tu cuerpo, cuidar 
                     de tu bienestar emocional y acompañarte en cada etapa 
                     de tu ciclo.
                 </p>
@@ -307,10 +104,41 @@
         </div>
     </section>
 
+    <!-- CONTACTO -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <h2 class="contact-title">¿Tienes alguna pregunta?</h2>
+            <p class="contact-subtitle">Nos encantaría escucharte. Envíanos un mensaje y te responderemos pronto.</p>
+            
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" required placeholder="Cuéntanos cómo podemos ayudarte..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
     <!-- FOOTER -->
     <footer>
         <p>&copy; 2026 Uteroo - Tu compañera menstrual</p>
         <p>Hecho con <span class="footer-heart">♥</span> para ti</p>
     </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/nav.js"></script>
+    <script src="assets/js/contact.js"></script>
 </body>
 </html>

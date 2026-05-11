@@ -1,0 +1,66 @@
+/* VARIABLES GLOBALES Y ESTILOS BASE */
+:root {
+    --primary: #EC407A;
+    --primary-light: #F8BBD0;
+    --primary-dark: #D81B60;
+    --primary-ultra-light: #FCE4EC;
+    --background: #FFFFFF;
+    --background-grey: #F5F5F5;
+    --text-primary: #424242;
+    --text-secondary: #757575;
+    --text-light: #616161;
+    --success: #4CAF50;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+}
+
+h1, h2, h3 {
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ANIMACIONES GLOBALES */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
