@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Uteroo</title>
+    
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/nav.css">
+    <link rel="stylesheet" href="assets/css/contact.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+</head>
+<body>
+    <!-- NAVEGACIÓN -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">Uteroo</a>
+            
+            <div class="nav-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#caracteristicas">Características</a></li>
+                <li><a href="index.html#sobre-uteroo">Sobre Uteroo</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CONTACTO -->
+    <section class="contact" id="contacto">
+        <div class="container">
+            <h2 class="contact-title">¿Tienes alguna pregunta?</h2>
+            <p class="contact-subtitle">Nos encantaría escucharte. Envíanos un mensaje y te responderemos pronto.</p>
+            
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" name="name" required placeholder="Tu nombre">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="tu@email.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" required placeholder="Cuéntanos cómo podemos ayudarte..."></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 Uteroo - Tu compañera menstrual</p>
+        <p>Hecho con <span class="footer-heart">♥</span> para ti</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="assets/js/nav.js"></script>
+    <script src="assets/js/contact.js"></script>
+</body>
+</html>
