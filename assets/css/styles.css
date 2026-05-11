@@ -10,6 +10,9 @@
     --text-secondary: #757575;
     --text-light: #616161;
     --success: #4CAF50;
+    
+    /* Forzar esquema de colores claro */
+    color-scheme: light only;
 }
 
 * {
@@ -21,12 +24,17 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px; /* Compensar altura del menú fijo */
+    /* Forzar esquema de colores claro en el elemento raíz */
+    color-scheme: light only;
 }
 
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     color: var(--text-primary);
+    background-color: var(--background);
+    /* Forzar esquema de colores claro */
+    color-scheme: light only;
 }
 
 h1, h2, h3 {
