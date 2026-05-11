@@ -18,6 +18,11 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Compensar altura del menú fijo */
+}
+
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;

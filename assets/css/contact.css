@@ -1,7 +1,7 @@
 /* CONTACTO */
 .contact {
-    background: linear-gradient(180deg, #FFFFFF 0%, #FCE4EC 100%);
-    padding: 64px 32px;
+    background: linear-gradient(180deg, #FCE4EC 0%, #FFFFFF 100%);
+    padding: 144px 32px 64px; /* Padding superior aumentado para el menú fijo */
 }
 
 .contact-title {
