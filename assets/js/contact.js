@@ -1,37 +1,43 @@
 // FUNCIONES DEL FORMULARIO DE CONTACTO
 
 // Manejar envío del formulario
-function handleSubmit(event) {
+async function handleSubmit(event) {
     event.preventDefault();
     
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const message = document.getElementById('message').value;
     
-    // Aquí puedes integrar con tu backend o servicio de email
-    // Por ahora, mostramos un alert
-    alert(`¡Gracias ${name}! Hemos recibido tu mensaje y te responderemos pronto a ${email}`);
+    // Deshabilitar botón mientras se envía
+    const submitBtn = event.target.querySelector('.submit-btn');
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Enviando...';
     
-    // Limpiar formulario
-    event.target.reset();
-    
-    // TODO: Integrar con backend o servicio de email
-    // Ejemplo con fetch:
-    /*
-    fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ name, email, message })
-    })
-    .then(response => response.json())
-    .then(data => {
-        alert('¡Mensaje enviado exitosamente!');
-        event.target.reset();
-    })
-    .catch(error => {
+    try {
+        const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ name, email, message })
+        });
+        
+        const data = await response.json();
+        
+        if (response.ok) {
+            alert(`¡Gracias ${name}! Hemos recibido tu mensaje y te responderemos pronto a ${email}`);
+            event.target.reset();
+        } else {
+            alert('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.');
+            console.error('Error:', data);
+        }
+    } catch (error) {
         alert('Hubo un error al enviar el mensaje. Por favor, intenta nuevamente.');
-    });
-    */
+        console.error('Error:', error);
+    } finally {
+        // Rehabilitar botón
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+    }
 }
