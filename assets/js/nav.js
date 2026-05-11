@@ -8,10 +8,25 @@ function toggleMenu() {
 
 // Cerrar menú al hacer clic en un enlace
 document.addEventListener('DOMContentLoaded', () => {
+    const navMenu = document.getElementById('navMenu');
+    const navToggle = document.querySelector('.nav-toggle');
+    
+    // Cerrar menú al hacer clic en un enlace
     document.querySelectorAll('.nav-menu a').forEach(link => {
         link.addEventListener('click', () => {
-            document.getElementById('navMenu').classList.remove('active');
+            navMenu.classList.remove('active');
         });
+    });
+
+    // Cerrar menú al hacer clic fuera (solo en móvil)
+    document.addEventListener('click', (e) => {
+        // Verificar si el menú está abierto
+        if (navMenu.classList.contains('active')) {
+            // Verificar si el clic fue fuera del menú y del botón hamburguesa
+            if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+            }
+        }
     });
 
     // Smooth scroll
