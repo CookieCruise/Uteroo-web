@@ -22,7 +22,7 @@
 .contact-form {
     max-width: 600px;
     margin: 0 auto;
-    background: var(--background-grey);
+    background: linear-gradient(180deg, #F8BBD0 0%, #FFE4EC 100%);
     padding: 40px;
     border-radius: 16px;
 }
