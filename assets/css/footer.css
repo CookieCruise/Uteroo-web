@@ -2,30 +2,52 @@
 footer {
     background: var(--primary);
     color: var(--background);
-    text-align: center;
-    padding: 32px 24px;
+    padding: 24px 24px;
     font-size: 14px;
+    position: relative;
 }
 
-.footer-heart {
-    color: var(--background);
-    font-size: 16px;
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
 }
 
-.footer-links {
-    margin-top: 12px;
+.footer-left {
+    text-align: center;
 }
 
-.footer-links a {
+.footer-left p {
+    margin: 4px 0;
+}
+
+.footer-right {
+    position: absolute;
+    right: 48px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.footer-right a {
     color: var(--background);
     text-decoration: none;
     font-size: 14px;
     transition: opacity 0.3s ease;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     padding-bottom: 2px;
+    white-space: nowrap;
 }
 
-.footer-links a:hover {
+.footer-right a:hover {
     opacity: 0.8;
     border-bottom-color: var(--background);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .footer-right {
+        position: static;
+        transform: none;
+        margin-top: 16px;
+    }
 }

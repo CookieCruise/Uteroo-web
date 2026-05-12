@@ -28,12 +28,39 @@
 
 .card:hover {
     transform: translateY(-8px);
-    box-shadow: 0 8px 24px rgba(236, 64, 122, 0.35);
+    box-shadow: 0 8px 24px rgba(236, 64, 122, 0.20);
 }
 
 .card-icon {
     font-size: 48px;
     margin-bottom: 16px;
+}
+
+.card-icon-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.card-icon-image img {
+    width: 125px;
+    height: 125px;
+    object-fit: contain;
+}
+
+.card-icon-botas {
+    margin-bottom: 0px;
+}
+
+.card-icon-tesito img {
+    width: 100px;
+    height: 100px;
+}
+
+.card-icon-flor img {
+    width: 100px;
+    height: 100px;
 }
 
 .card h3 {
